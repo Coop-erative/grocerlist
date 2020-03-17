@@ -2,7 +2,7 @@ package com.Cooper.grocerylist;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,15 +10,13 @@ import java.util.List;
 public class Category extends AbstractEntity  {
 
     private String name;
-    private String value;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn
-    private final List<Recipe> Recipe = new ArrayList<>();
+    private final List<Recipe> recipes = new ArrayList<>();
 
-    public Category(String category, String value) {
+    public Category(String category) {
         this.name = category;
-        this.value = value;
     }
 
     public Category(){}
@@ -31,15 +29,7 @@ public class Category extends AbstractEntity  {
         this.name = category;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public List<com.Cooper.grocerylist.Recipe> getRecipe() {
-        return Recipe;
+    public List<Recipe> getRecipe() {
+        return recipes;
     }
 }
