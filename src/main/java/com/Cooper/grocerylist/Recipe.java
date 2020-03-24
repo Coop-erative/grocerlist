@@ -1,9 +1,10 @@
 package com.Cooper.grocerylist;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,9 @@ public class Recipe extends AbstractEntity {
     @ManyToOne
     private Category category;
 
+    @Length(max = 500)
+    private String steps;
+
     @ManyToMany
     private List<Ingredient> ingredients;
 
@@ -20,7 +24,6 @@ public class Recipe extends AbstractEntity {
         super();
         this.category = category;
         this.ingredients = ingredients;
-
     }
 
     public Recipe() {}
@@ -39,5 +42,13 @@ public class Recipe extends AbstractEntity {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getSteps() {
+        return steps;
+    }
+
+    public void setSteps(String steps) {
+        this.steps = steps;
     }
 }

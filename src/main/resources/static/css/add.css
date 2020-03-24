@@ -1,0 +1,13 @@
+.form-group {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      top: 40px;
+}
+
+#add {
+    float: left;
+    padding: 0 40px 1em 0;
+    margin: 100px;
+    margin-left: auto;
+}

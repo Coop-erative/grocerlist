@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+<body>
+    <div th:replace="fragments :: page-header"></div>
+
+    <div class="container body-content">
+        <h1 th:text="${#Strings.capitalizeWords(title)}"></h1>
+    </div>
+
+    <table class="recipe-listing">
+        <tr th:each="recipe: ${recipes}">
+            <td>
+                <p>
+                    Recipe Id:
+                    <a th:href="@{'/view/' + ${recipe.id}}" th:text="${recipe.id}"></a>
+                </p>
+                <p>
+                    Recipe:
+                    <a th:href="@{'/recipes/view/' + ${recipes.category.id}}" th:text="${recipes.category.id}"></a>
+                </p>
+                <p>
+                    Category:
+                    <ul th:each="ingredient : ${recipe.ingredients}">
+                        <li>
+                            <a th:href="@{'/ingredients/view/' + ${ingredients.id}}" th:text="${ingredients.measurementType}"></a>
+
+                        </li>
+                    </ul>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
