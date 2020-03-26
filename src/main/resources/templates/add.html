@@ -1,43 +1,111 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-    <link th:href="@{/css/add.css}" rel="stylesheet" />
+<head  th:include="fragments :: head">
 </head>
 
 <body>
 
 <div th:replace="fragments :: page-header"></div>
 
-
-
 <form id="add" method="post"  style="max-width:600px;">
-
+<container>
     <div class="form-group">
+        <label th:for="name">Recipe Name</label>
+        <input name="name" type="text">
+    </div>
+</container>
+
+
+    <div class="form-row">
         <label th:for="category">Category</label>
-            <select name="categoryId">
-                <option th:each="category : ${categories}"
-                        th:text="${category.category}"
-                        th:value="${category.id}"></option>
-            </select>
+        <select name="categoryId">
+            <option th:each="category : ${categories}"
+                    th:text="${category.category}"
+                    th:value="${category.id}"></option>
+        </select>
         <a th:href="@{'/categories/add'}">Add Category</a>
     </div>
 
-    <div class="form-group">
-        <label th:for="ingredients">Ingredients</label>
-        <input class="form-control" type="text" placeholder="Ingredient Name">
-        <input class="form-control" type="text" placeholder="Amount">
-        <select class="form-control">
-            <option th:each="ingredient : ${ingredients}"
-                    th:text="${ingredient.measurementType}"
-                    th:value="${ingredient.id}"></option>
-        </select>
-<!--        Button to add another ingredient group (also need to get inputs left to right-->
+
+<div class="container">
+    <label th:for="category">Ingredients</label>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-bordered table-hover" id="tab_logic">
+                <thead>
+                <tr >
+                    <th class="text-center">
+                        Name
+                    </th>
+                    <th class="text-center">
+                        Amount
+                    </th>
+                    <th class="text-center">
+                        Type
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id='addr0'>
+                    <td>
+                        <input type="text" name='name0'  placeholder='Name' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='amount0' placeholder='Amount' class="form-control"/>
+                    </td>
+                    <td><select name='type"+i+"' placeholder='Ingredient' class="form-control input-md">
+                    <option th:each="ingredient : ${ingredients}"
+                          th:text="${ingredient.measurementType}"
+                          th:value="${ingredient.id}">
+                    </option>
+                    </select></td>"
+                </tr>
+                <tr id='addr1'></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+</div>
+
+    <div class="mb-3">
+        <label th:for="steps">Recipe Instructions</label>
+        <textarea class="form-control" id="instructionTextarea"></textarea>
     </div>
 
     <div class="form-group">
         <input type="submit" value="Add Recipe" class="btn btn-success">
     </div>
-</form>
 
+<!--bootsnipp -->
+
+<script>
+     $(document).ready(function(){
+      var i=1;
+     $("#add_row").click(function(){
+      $('#addr'+i).html("<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'/></td>
+      <td><input name='amount"+i+"' type='text' placeholder='Amount' class='form-control input-md'></td>
+     <td><select name='type"+i+"' placeholder='Ingredient' class="form-control input-md">
+     <option th:each="ingredient : ${ingredients}"
+      th:text="${ingredient.measurementType}"
+      th:value="${ingredient.id}">
+     </option>
+     </select></td>
+      ");
+
+      $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+      i++;
+  });
+     $("#delete_row").click(function(){
+    	 if(i>1){
+		 $("#addr"+(i-1)).html('');
+		 i--;
+		 }
+	 });
+
+});
+</script>
+</form>
 </body>
 </html>

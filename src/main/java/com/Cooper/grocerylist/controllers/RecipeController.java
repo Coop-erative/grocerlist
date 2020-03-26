@@ -42,7 +42,7 @@ public class RecipeController {
     public String processAddRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
                                     Errors errors, Model model, @RequestParam Integer categoryId,
                                     @RequestParam List<Integer> ingredient) {
-
+//need to update to reciepe from category....category and ingred
         if (errors.hasErrors()) {
             return "add";
         }
@@ -56,7 +56,7 @@ public class RecipeController {
 
         recipeRepository.save(newRecipe);
 
-        return "redirect:";
+        return "redirect:/index";
     }
 
 
