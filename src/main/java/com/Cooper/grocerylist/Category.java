@@ -9,27 +9,15 @@ import java.util.List;
 @Entity
 public class Category extends AbstractEntity  {
 
-    private String category;
+    //Using name to represent categoryName
 
     @OneToMany
     @JoinColumn
-    private final List<Recipe> categories = new ArrayList<>();
-
-    public Category(String category) {
-        this.category = category;
-    }
+    private final List<Ingredient> category = new ArrayList<>();
 
     public Category(){}
 
-    public String getCategory() {
+    public List<Ingredient> getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public List<Recipe> getRecipe() {
-        return categories;
     }
 }

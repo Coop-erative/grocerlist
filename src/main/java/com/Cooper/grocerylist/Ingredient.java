@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -17,12 +18,16 @@ public class Ingredient extends AbstractEntity {
     // perhaps eventually the entry text that has a drop down
     // menu to show what is already there?
 
-    @ManyToMany(mappedBy = "ingredients")
-    @NotNull
-    private final List<Recipe> recipes = new ArrayList<>();
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private Recipe recipe;
 
     @NotNull
     private String measurementType;
+
+    private String ingredientDescription;
 
     public Ingredient(String measurementType) {
         this.measurementType = measurementType;
@@ -30,11 +35,33 @@ public class Ingredient extends AbstractEntity {
 
     public Ingredient() {}
 
+    public Ingredient(String measurementType, String ingredientDescription) {
+        super();
+        this.measurementType = measurementType;
+        this.ingredientDescription = ingredientDescription;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public String getMeasurementType() {
         return measurementType;
     }
 
     public void setMeasurementType(String measurementType) {
         this.measurementType = measurementType;
+    }
+
+    public String getIngredientDescription() {
+        return ingredientDescription;
+    }
+
+    public void setIngredientDescription(String ingredientDescription) {
+        this.ingredientDescription = ingredientDescription;
     }
 }

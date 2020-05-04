@@ -7,21 +7,27 @@
 <div th:replace="fragments :: page-header"></div>
 
 
-<!--<table class="table table-striped">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>Category</th>-->
-<!--        <th>Recipe Name</th>-->
-<!--        <th>Source</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tr th:each="recipe : ${recipes}">-->
-<!--        <td th:text="${recipe.id}"></td>-->
-<!--        <td th:text="${recipe.category.displayName}"></td>-->
-<!--        <td th:text="${recipe.name}"></td>-->
-<!--        <th th:text="${recipe.source}"></th>-->
-<!--    </tr>-->
-<!--</table>-->
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Recipe Name</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="recipe : ${recipe}">
+                <td th:text="${recipe.id}"></td>
+                <td th:text="${recipe.name}"></td>
+                <td th:text="${recipe.name}"></td>
+                <td th:text="${recipe.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

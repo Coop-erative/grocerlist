@@ -26,38 +26,9 @@ public class RecipeController {
 
     @RequestMapping("")
     public String index(Model model) {
+       model.addAttribute("recipe", recipeRepository.findAll());
+
         return "index";
     }
-
-    @RequestMapping("add")
-    public String displayAddJobForm(Model model) {
-        model.addAttribute(new Recipe());
-        model.addAttribute("ingredients", ingredientRepository.findAll());
-        model.addAttribute("recipes", recipeRepository.findAll());
-        model.addAttribute("categories", categoryRepository.findAll());
-        return "add";
-    }
-
-    @PostMapping("add")
-    public String processAddRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
-                                    Errors errors, Model model, @RequestParam Integer categoryId,
-                                    @RequestParam List<Integer> ingredient) {
-//need to update to reciepe from category....category and ingred
-        if (errors.hasErrors()) {
-            return "add";
-        }
-
-        //Create a new instance of Employer, set equal to employer Repository  and then save to job repository
-        Category category = categoryRepository.findById(categoryId).orElse(new Category());
-        newRecipe.setCategory(category);
-
-        List<Ingredient> ingredientObject = (List<Ingredient>) ingredientRepository.findAllById(ingredient);
-        newRecipe.setIngredients(ingredientObject);
-
-        recipeRepository.save(newRecipe);
-
-        return "redirect:/index";
-    }
-
 
 }

@@ -15,6 +15,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    
     @GetMapping("add")
     public String displayaddCategoryForm(Model model) {
         model.addAttribute(new Category());
