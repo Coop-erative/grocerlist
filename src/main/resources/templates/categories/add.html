@@ -6,6 +6,7 @@
 
 <div th:replace="fragments :: page-header"></div>
 
+<!--//Ingredients Table:-->
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -16,13 +17,16 @@
                         #
                     </th>
                     <th class="text-center">
-                        Name
+                        Ingredient Name
                     </th>
                     <th class="text-center">
-                        Mail
+                        Amount
                     </th>
                     <th class="text-center">
-                        Mobile
+                        Unit
+                    </th>
+                    <th class="text-center">
+                        Method of Prep.
                     </th>
                 </tr>
                 </thead>
@@ -35,10 +39,13 @@
                         <input type="text" name='name0'  placeholder='Name' class="form-control"/>
                     </td>
                     <td>
-                        <input type="text" name='mail0' placeholder='Mail' class="form-control"/>
+                        <input type="text" name='mail0' placeholder='Amount' class="form-control"/>
                     </td>
                     <td>
-                        <input type="text" name='mobile0' placeholder='Mobile' class="form-control"/>
+                        <input type="text" name='mobile0' placeholder='Unit' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='mobile0' placeholder='Method' class="form-control"/>
                     </td>
                 </tr>
                 <tr id='addr1'></tr>

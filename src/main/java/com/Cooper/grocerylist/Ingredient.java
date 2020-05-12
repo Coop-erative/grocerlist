@@ -25,9 +25,14 @@ public class Ingredient extends AbstractEntity {
     private Recipe recipe;
 
     @NotNull
+    private Integer amount;
+
+    @NotNull
     private String measurementType;
 
-    private String ingredientDescription;
+    private String ingredient_Name;
+
+    private String ingredient_Note;
 
     public Ingredient(String measurementType) {
         this.measurementType = measurementType;
@@ -35,10 +40,12 @@ public class Ingredient extends AbstractEntity {
 
     public Ingredient() {}
 
-    public Ingredient(String measurementType, String ingredientDescription) {
+    public Ingredient(String measurementType, String ingredient_Note, Integer amount, String ingredient_Name) {
         super();
+        this.amount = amount;
+        this.ingredient_Name = ingredient_Name;
         this.measurementType = measurementType;
-        this.ingredientDescription = ingredientDescription;
+        this.ingredient_Note = ingredient_Note;
     }
 
     public Category getCategory() {
@@ -57,11 +64,35 @@ public class Ingredient extends AbstractEntity {
         this.measurementType = measurementType;
     }
 
-    public String getIngredientDescription() {
-        return ingredientDescription;
+    public String ingredient_Note() {
+        return ingredient_Note;
     }
 
-    public void setIngredientDescription(String ingredientDescription) {
-        this.ingredientDescription = ingredientDescription;
+    public void setIngredientDescription(String ingredient_Note) {
+        this.ingredient_Note = ingredient_Note;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getIngredient_Name() {
+        return ingredient_Name;
+    }
+
+    public void setIngredient_Name(String ingredient_Name) {
+        this.ingredient_Name = ingredient_Name;
     }
 }

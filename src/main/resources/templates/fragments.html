@@ -32,5 +32,41 @@
     </div>
 </div>
 
+<!--Show one whole recipe:-->
+<div th:fragment="recipe-display">
+
+<div class="wprm-recipe-ingredients-container wprm-block-text-normal">
+    <h3 class="wprm-recipe-header wprm-recipe-ingredients-header wprm-block-text-normal">Ingredients</h3>
+        <div class="wprm-recipe-ingredient-group">
+            <ul class="wprm-recipe-ingredients">
+                <li class="wprm-recipe-ingredient" style="list-style-type:disc;">
+                    <span class="wprm-recipe-ingredient-amount">2</span>
+                    <span class="wprm-recipe-ingredient-unit">tablespoons</span>
+                    <span class="wprm-recipe-ingredient-name">tablespoons</span>
+                    ","
+                    <span class="wprm-recipe-ingredient-notes">tablespoons</span>
+                </li>
+                <li> and so forth for the thymeleaf thing </li>
+            </ul>
+        </div>
+</div>
+<div class="wprm-recipe-instructions-container wprm-block-text-normal">
+    <h3 class="wprm-recipe-header wprm-recipe-instrucitons-header wprm-block-text-bold">Instructions</h3>
+    <div class="wprm-recipe-instruciton-group">
+        <ul class="wprm-recipe-instructions">
+            <li id="wprm-recipe-3600-step-0-0" class="wprm-recipe-instruction" style="list-style-type: decimal;">
+                <div class="wprm-recipe-instruction-text" style="margine-bottom: 5px">
+                    <span style="display: block;">
+                        "first instruction....blah blah."
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div> //recipe-display end
+
+
 </body>
 </html>

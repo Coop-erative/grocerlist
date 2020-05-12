@@ -11,6 +11,9 @@ import java.util.List;
 @Entity
 public class Recipe extends AbstractEntity {
 
+    @NotNull
+    private String recipe_Name;
+
     @ManyToOne
     private User user;
 
@@ -18,8 +21,9 @@ public class Recipe extends AbstractEntity {
     @JoinColumn
     private List<Ingredient> ingredients;
 
-    public Recipe(ArrayList<Ingredient> ingredients) {
+    public Recipe(ArrayList<Ingredient> ingredients, String recipe_Name) {
         super();
+        this.recipe_Name = recipe_Name;
         this.ingredients = ingredients;
     }
 
@@ -31,5 +35,21 @@ public class Recipe extends AbstractEntity {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getRecipe_Name() {
+        return recipe_Name;
+    }
+
+    public void setRecipe_Name(String recipe_Name) {
+        this.recipe_Name = recipe_Name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
